@@ -1,0 +1,11 @@
+<p>Hacking Demo</p>
+<%= link_to 'new', 'Create User' %>
+<table>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+  </tr>
+  <% end %>
+</table>
+
