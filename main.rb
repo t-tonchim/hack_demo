@@ -1,11 +1,22 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'mysql2'
+require_relative 'db_connector'
+require_relative 'models/init'
+
+DB = DbConnector.new
 
 get '/' do
   @title = 'main'
   @content = 'main_content'
-  @users = @user || [User.new(1, "user1"), User.new(2, "user2")]
+  @users = []
+
+  users = DB.con.query("SELECT * FROM users")
+
+  users.each do |u|
+    @users << User.new(u)
+  end
+
   erb :index
 end
 
@@ -16,7 +27,7 @@ get '/new' do
 end
 
 post '/create' do
-  @user = User.new(params[:id], params[:name])
+  DB.con.query("INSERT INTO users (name, age) VALUES ('#{params['name']}','#{params['age']}')")
   redirect to '/'
 end
 
@@ -26,13 +37,3 @@ helpers do
   end
 end
 
-#models
-class User
-  attr_accessor :id
-  attr_accessor :name
-
-  def initialize(id, name)
-    @id = id
-    @name = name
-  end
-end

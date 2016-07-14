@@ -1,0 +1,6 @@
+#development
+database:
+  host: localhost
+  username: root
+  password: p@ssword
+  database: hack_demo
