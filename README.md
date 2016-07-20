@@ -1,4 +1,4 @@
-# ruby setup
+# how to setup
 ## rbenv install & setting
 ```
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -12,8 +12,8 @@ srource ~/.bash_profile
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 rbenv rehash
 ```
-
-sudo apt-get update
+## update repository
+`sudo apt-get update`
 
 ## install rbenv dependency
 `sudo apt-get install -y libssl-dev libreadline-dev`
