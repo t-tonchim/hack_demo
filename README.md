@@ -45,10 +45,9 @@ rbenv rehash
 
 ## clone hack_demo project
 ```
-cd ~/
-git clone https://github.com/tomoyuki-tanaka/hack_demo.git
-cd ./hack_demo
+git clone https://github.com/tomoyuki-tanaka/hack_demo.git ~/hack_demo
+cd ~/hack_demo
 bundle install
 ```
 
-## Let's type 'ruby ~/hack_demo/main.rb -o 0.0.0.0'
+## Let's type ' ruby ~/hack_demo/main.rb -o 0.0.0.0 '
