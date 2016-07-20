@@ -1,11 +1,22 @@
-<p>Hacking Demo</p>
-<%= link_to 'new', 'Create User' %>
+<h1>Hacking Demo</h1>
+<%= link_to '/new', 'create user' %>
+<form action="/users">
+  <p>SELECT * FROM users WHERE id = (  );</p>
+<input type="text" name="id" placeholder="'' or true"/>
+<input type="submit" value="search user">
+</form>
+
 <table>
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= user.id %></td>
-    <td><%= user.name %></td>
-  </tr>
+  <% @users.each do |u| %>
+    <tr>
+      <td>
+        <p>name: <%= u.name %></p>
+      </td>
+      <td>
+        <p>age: <%= u.age %></p>
+      </td>
+
+    </tr>
   <% end %>
 </table>
 

@@ -1,23 +1,38 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'mysql2'
+require 'json'
 require_relative 'db_connector'
 require_relative 'models/init'
+
+#disable rack protection
+disable :protection
 
 DB = DbConnector.new
 
 get '/' do
   @title = 'main'
-  @content = 'main_content'
   @users = []
-
   users = DB.con.query("SELECT * FROM users")
 
-  users.each do |u|
-    @users << User.new(u)
+  users.each do |user|
+    @users << User.new(user)
   end
 
   erb :index
+end
+
+get '/users/:id' do
+  content_type :json
+  result = DB.con.query("SELECT * FROM users WHERE id = #{params[:id]}")
+  users = []
+
+  result.each do |r|
+    users << r
+  end
+
+  output = { users: users }
+  output
 end
 
 get '/new' do
