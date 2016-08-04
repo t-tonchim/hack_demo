@@ -15,6 +15,6 @@ class DbConnector
     @user = PROF['username']
     @pass = PROF['password']
     @db   = PROF['database']
-    @con  = Mysql2::Client.new(host: @host, username: @user, password: @pass, database: @db)
+    @con  = Mysql2::Client.new(host: @host, username: @user, password: @pass, database: @db, :flags => Mysql2::Client::MULTI_STATEMENTS)
   end
 end

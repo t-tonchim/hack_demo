@@ -7,10 +7,12 @@ require_relative 'models/init'
 
 #disable rack protection
 disable :protection
+enable :sessions
 
 DB = DbConnector.new
 
 get '/' do
+  session[:value] ||= rand 100
   @title = 'main'
   @users = []
   users = DB.con.query("SELECT * FROM users")
@@ -18,6 +20,8 @@ get '/' do
   users.each do |user|
     @users << User.new(user)
   end
+
+  @cookie = session[:value]
 
   erb :index
 end
