@@ -13,6 +13,7 @@ DB = DbConnector.new
 
 get '/' do
   session[:value] ||= rand 100
+  @cookie = session[:value]
   @title = 'main'
   @users = []
   users = DB.con.query("SELECT * FROM users")
@@ -21,12 +22,10 @@ get '/' do
     @users << User.new(user)
   end
 
-  @cookie = session[:value]
-
   erb :index
 end
 
-get '/users/:id' do
+post '/users' do
   content_type :json
   result = DB.con.query("SELECT * FROM users WHERE id = #{params[:id]}")
   users = []
@@ -35,8 +34,8 @@ get '/users/:id' do
     users << r
   end
 
-  output = { users: users }
-  output
+  output = { "users" => users }
+  output.to_json
 end
 
 get '/new' do
@@ -48,6 +47,20 @@ end
 post '/create' do
   DB.con.query("INSERT INTO users (name, age) VALUES ('#{params['name']}','#{params['age']}')")
   redirect to '/'
+end
+
+get '/question' do
+  erb :question
+end
+
+post '/question' do
+  session[:name], session[:join], session[:tec], session[:assign] = params['name'], params['joined_day'], params['tec'], params['assign']
+  session[:news], session[:person], session[:reason] = params['news'], params['person'], params['reason']
+  redirect to '/thank'
+end
+
+get '/thank' do
+  erb :thank
 end
 
 helpers do

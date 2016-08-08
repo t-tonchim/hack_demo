@@ -1,0 +1,87 @@
+<style>
+  th.xf_field { background-color:#EEEEEE; }
+  td.xf_input { background-color:#FFFFFF; }
+  td.xf_explain { background-color:#FFFFFF;  }
+  th.xf_field { color:#333333; }
+  td.xf_explain { color:#333333; }
+  span.xf_essential { color:#FF9900; }
+  .xf_block0 { text-align:center; }
+  .xf_block1 { text-align:center; }
+  .xf_block2 { text-align:center; }
+  span.xf_essential { margin-left:10px; }
+  .xf_block { margin-bottom:10px; }
+</style>
+<form action="/question" method="post">
+  <table class="xf_block" border="1" cellpadding="5" cellspacing="0" align="center" bordercolor="#333333">
+    <tr>
+      <th class="xf_table_title" colspan="2" bordercolor="#333333">
+        <h1 style="margin-top: 10px;">事前アンケート</h1>
+      </th>
+    </tr>
+    <tr>
+      <th class="xf_field" width="250" bordercolor="#333333">
+        氏名<span class="xf_essential">※</span>
+      </th>
+      <td class="xf_input" width="350" bordercolor="#333333">
+        <input id="input8" type="text" name="name" value="<%= session[:name] || '' %>" size="30">
+      </td>
+    </tr>
+    <tr>
+      <th class="xf_field" width="250" bordercolor="#333333">
+        入社日<span class="xf_essential">※</span>
+      </th>
+      <td class="xf_input" width="350" bordercolor="#333333">
+        <input type="text" name="joined_day" value="<%= session[:join] || '' %>" size="30">
+      </td>
+    </tr>
+    <tr>
+      <th class="xf_field" width="250" bordercolor="#333333">
+        アサイン先<span class="xf_essential">※</span>
+      </th>
+      <td class="xf_input" width="350" bordercolor="#333333">
+        <input id="input30" type="text" name="assign" value="<%= session[:assign] || ''%>" size="50">
+      </td>
+    </tr>
+    <tr>
+      <th class="xf_field" width="250" bordercolor="#333333">
+        最近気になる技術<span class="xf_essential">※</span>
+      </th>
+      <td class="xf_input" width="350" bordercolor="#333333">
+        <textarea id="input43" name="tec" cols="50" rows="5"><%= session[:tec] || '' %></textarea>
+      </td>
+    </tr>
+    <tr>
+      <th class="xf_field" width="250" bordercolor="#333333">
+        気になるニュース<span class="xf_essential">※</span>
+      </th>
+      <td class="xf_input" width="350" bordercolor="#333333">
+        <textarea id="input44" name="news" cols="50" rows="5"><%= session[:news] || '' %></textarea>
+      </td>
+    </tr>
+    <tr>
+      <th class="xf_field" width="250" bordercolor="#333333">
+        気になるラクス社員(異性)<span class="xf_essential">※</span>
+      </th>
+      <td class="xf_input" width="350" bordercolor="#333333">
+        <input id="input45" type="text" name="person" value="<%= session[:person] || '' %>" size="50" required>
+        <br>
+        ※複数あれば「,」（カンマ）で区切ってください。
+      </td>
+    </tr>
+    <tr>
+      <th class="xf_field" width="250" bordercolor="#333333">
+        その理由<span class="xf_essential">※</span>
+      </th>
+      <td class="xf_input" width="350" bordercolor="#333333">
+        <textarea id="input46" type="text" name="reason" rows="5" cols="50"><%= session[:reason] || ''%></textarea>
+      </td>
+    </tr>
+  </table>
+  <br clear="all">
+  <div class="xf_block xf_block1">
+    <input type="submit" value="確認">
+  </div>
+  <div class="xf_block xf_block2">
+    入力内容をご確認の上、宜しければ送信ボタンを押してください。
+  </div>
+</form>

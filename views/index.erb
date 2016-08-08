@@ -1,10 +1,10 @@
 <h1>Hacking Demo</h1>
 <%= @cookie %>
 <%= link_to '/new', 'create user' %>
-<form action="/users">
+<form action="/users" method="post">
   <p>SELECT * FROM users WHERE id = (  );</p>
-<input type="text" name="id" placeholder="'' or true"/>
-<input type="submit" value="search user">
+  <input type="text"  name="id" placeholder="'' or true"/>
+  <input type="submit" value="search user">
 </form>
 
 <table>
