@@ -5,6 +5,9 @@ require 'json'
 require_relative 'db_connector'
 require_relative 'models/init'
 
+set :environment, :production
+#set :port, 80
+
 #disable rack protection
 disable :protection
 enable :sessions
