@@ -1,13 +1,23 @@
 <h1>Hacking Demo</h1>
-<%= @cookie %>
+<br>
+<p>Try XSS.</p>
 <%= link_to '/new', 'create user' %>
+<br>
 <form action="/users" method="post">
+  <p>let's SQL injection!</p>
   <p>SELECT * FROM users WHERE id = (  );</p>
   <input type="text"  name="id" placeholder="'' or true"/>
   <input type="submit" value="search user">
 </form>
-
+<br>
+<%= link_to '/sessions','Show sessions' %>
+<br>
+<%= link_to '/question','Show question' %>
+<br>
 <table>
+  <tr>
+    <th>All Users</th>
+  </tr>
   <% @users.each do |u| %>
     <tr>
       <td>
@@ -16,7 +26,6 @@
       <td>
         <p>age: <%= u.age %></p>
       </td>
-
     </tr>
   <% end %>
 </table>

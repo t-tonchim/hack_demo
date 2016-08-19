@@ -1,0 +1,6 @@
+<h1>みんなのセッション情報</h1>
+<% @sessions.each do |s| %>
+    <p><%= s[:name] if s[:name] %>さんのsession:&nbsp<%= s[:cookie] %></p>
+    <br>
+<% end %>
+
